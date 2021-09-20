@@ -2,7 +2,17 @@ int x=200;
 int y=-20; 
 int a=200;
 int b=-20;
+
+int curveX1=0;
+int curveY1=0;
+int curveX2=0;
+int curveY2=0;
+
+int g=0;
+
 int winColor=180;
+
+boolean bezier=false;
 void setup(){
   size(400,400);
   background(0);
@@ -47,18 +57,36 @@ void mousePressed(){
   buildings();
 }
 
+void keyPressed(){
+ if (key=='b')
+  bezier=true; 
+}
+
 void lightning(){
   winColor=-150;
   while(b<400){
     x=a;
     y=b; 
+    curveX1=x-g;
+    curveY1=y+15;
+    curveX2=a+g;
+    curveY2=b+15;
     stroke(255);
-    b+=10;
     a+=(int)(Math.random()*21)-10;
-    line(x,y,a,b);
+    g+=(int)(Math.random()*51)-25;
+    noFill();
+    if (bezier==false){
+      b+=10;
+      line(x,y,a,b);
+    }
+    if (bezier==true){
+      b+=50;
+      bezier(x,y,curveX1,curveY1,curveX2,curveY2,a,b);
+    }
   }
   a=(int)(Math.random()*300)+50;
   b=-20;
+  g=0;
   noStroke();
 }
 

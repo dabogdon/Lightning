@@ -13,6 +13,7 @@ int g=0;
 int winColor=180;
 
 boolean bezier=false;
+
 void setup(){
   size(400,400);
   background(0);

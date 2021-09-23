@@ -12,7 +12,7 @@ int g=0;
 
 int winColor=180;
 
-boolean bezier=false;
+boolean curveLightning=false;
 
 void setup(){
   size(400,400);
@@ -60,10 +60,10 @@ void mousePressed(){
 
 void keyPressed(){
  if (key=='b')
-   if(bezier==false)
-     bezier=true;
+   if(curveLightning==false)
+     curveLightning=true;
    else
-     bezier=false;
+     curveLightning=false;
 }
 
 void lightning(){
@@ -79,11 +79,11 @@ void lightning(){
     a+=(int)(Math.random()*21)-10;
     g+=(int)(Math.random()*51)-25;
     noFill();
-    if (bezier==false){
+    if (curveLightning==false){
       b+=10;
       line(x,y,a,b);
     }
-    if (bezier==true){
+    if (curveLightning==true){
       b+=50;
       bezier(x,y,curveX1,curveY1,curveX2,curveY2,a,b);
     }

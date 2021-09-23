@@ -60,7 +60,10 @@ void mousePressed(){
 
 void keyPressed(){
  if (key=='b')
-  bezier=true; 
+   if(bezier==false)
+     bezier=true;
+   else
+     bezier=false;
 }
 
 void lightning(){
